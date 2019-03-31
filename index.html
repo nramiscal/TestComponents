@@ -24,7 +24,8 @@
         <div id="events"></div><hr>
         <div id="babel"></div><hr>
 
-        <!-- ADD DYNAMIC CONTENT -->
+
+        <!-- ADDED DYNAMIC CONTENT -->
         <script>
             const Title = (props) => {
                 const {text} = props;
@@ -38,9 +39,8 @@
         </script>
 
 
-        <!-- ADD PROPS -->
+        <!-- ADDED PROPS -->
         <script>
-
             const header = (props) => {
                 const { text } = props;
                 return React.createElement('h1', null, text);
@@ -52,12 +52,10 @@
                     React.createElement(header, { text: 'Header three' } ));
 
             ReactDOM.render(app, document.getElementById('props'));
-
         </script>
 
 
-
-        <!-- ADD EVENTS -->
+        <!-- ADDED EVENTS -->
         <script>
             const buttonProps = { onClick() { alert('You clicked me!'); }}
             const button = React.createElement('button', buttonProps, 'Click me!');
@@ -66,15 +64,12 @@
         </script>
 
 
-
-        <!-- ADD BABEL AND JSX -->
+        <!-- ADDED BABEL AND JSX -->
         <script type="text/babel">
-
             ReactDOM.render(
                 <h1>Hello World</h1>,
                 document.getElementById('babel')
             );
-
         </script>
 
     </body>
