@@ -23,6 +23,8 @@
         <div id="props"></div><hr>
         <div id="events"></div><hr>
         <div id="babel"></div><hr>
+        <div id="comp"></div><hr>
+        <div id="comp2"></div><hr>
 
 
         <!-- ADDED DYNAMIC CONTENT -->
@@ -70,6 +72,49 @@
                 <h1>Hello World</h1>,
                 document.getElementById('babel')
             );
+
+        </script>
+
+        <!-- STATELESS FUNCTIONAL COMPONENTS -->
+        <script>
+
+            function Headline(props) {
+                const {title} = props; // Destructuring assignment
+                return React.createElement(Text, {title});
+            }
+
+            function Text({title}) {
+                return React.createElement('h1', null, `${title}`);
+                // Destructuring done in the parameter
+                // This is a standard React pattern
+            }
+
+            const hello = Headline({title: 'Hello'}); // Will always return an h1 with 'Hello'
+            const goodbye = Headline({title: 'Goodbye'}); // Will always return an h1 with 'Goodbye'
+
+            const greet = React.createElement('div', null, hello, goodbye)
+
+            ReactDOM.render(greet, document.getElementById('comp'))
+
+
+        </script>
+
+        <!-- STATELESS FUNCTION COMPONENTS USING JSX -->
+        <script type="text/babel">
+
+            const List = (props) => {
+                const listItems = props.items.map((itemString) => {
+                    return <li key={itemString}>{itemString}</li>
+                });
+                return (
+                    <ul>
+                        {listItems}
+                    </ul>
+                )
+            }
+
+            ReactDOM.render(<List items= { ['React', 'Redux', 'Node', 'Express'] } />, document.getElementById('comp2'));
+
         </script>
 
     </body>
