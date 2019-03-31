@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <style>
+        button {
+            width: 100px;
+            height: 40px;
+            background-color: blue;
+            border-radius: 10px;
+            color: white;
+            font-size: 120%;
+        }
+        </style>
+        <script src="node_modules/react/umd/react.development.js"></script>
+        <script src="node_modules/react-dom/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+
+        <div id="dynContent"></div><hr>
+        <div id="props"></div><hr>
+        <div id="events"></div><hr>
+        <div id="babel"></div><hr>
+
+        <!-- ADD DYNAMIC CONTENT -->
+        <script>
+            const Title = (props) => {
+                const {text} = props;
+                return React.createElement('h1', null, text);
+            }
+
+            const App = React.createElement(Title,
+                { text: 'Dynamic content! Hooray!' });
+
+            ReactDOM.render(App, document.getElementById('dynContent'));
+        </script>
+
+
+        <!-- ADD PROPS -->
+        <script>
+
+            const header = (props) => {
+                const { text } = props;
+                return React.createElement('h1', null, text);
+            }
+
+            const app = React.createElement('div', null,
+                    React.createElement(header, { text: 'Header one' } ),
+                    React.createElement(header, { text: 'Header two' } ),
+                    React.createElement(header, { text: 'Header three' } ));
+
+            ReactDOM.render(app, document.getElementById('props'));
+
+        </script>
+
+
+
+        <!-- ADD EVENTS -->
+        <script>
+            const buttonProps = { onClick() { alert('You clicked me!'); }}
+            const button = React.createElement('button', buttonProps, 'Click me!');
+
+            ReactDOM.render( button, document.getElementById('events'));
+        </script>
+
+
+
+        <!-- ADD BABEL AND JSX -->
+        <script type="text/babel">
+
+            ReactDOM.render(
+                <h1>Hello World</h1>,
+                document.getElementById('babel')
+            );
+
+        </script>
+
+    </body>
+</html>
